@@ -1,18 +1,19 @@
 import React from 'react';
-import { nanoid } from '@reduxjs/toolkit';
-import { useDispatch, useSelector } from 'react-redux';
-import { getFilter } from 'redux/selectors';
-import { changeFilter } from 'redux/filterSlice';
 import { Div, Label, Input } from './Filter.styled';
 
+import { nanoid } from '@reduxjs/toolkit';
+import { useSelector, useDispatch } from 'react-redux';
+import { getFilter } from 'redux/selectors';
+import { changeFilter } from 'redux/filterSlice';
 
 const filterInputId = nanoid();
+
 // Компонент фільтрації контактів
 const Filter = () => {
   const value = useSelector(getFilter);
   const dispatch = useDispatch();
 
-
+  // Обробник зміни значення фільтра
   const onChange = event => {
     const normalizedValue = event.target.value.toLowerCase();
 
@@ -32,7 +33,6 @@ const Filter = () => {
       </Label>
     </Div>
   );
-}
-
+};
 
 export default Filter;
